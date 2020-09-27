@@ -1,0 +1,7 @@
+name: "test-kotlin-mod"
+displayName: "Test kotlin Mod"
+author: "purofle"
+main: "com.github.purofle.TestMod"
+description: "A jar mod."
+version: 1.0
+minGameVersion: 105
