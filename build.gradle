@@ -1,5 +1,4 @@
 apply plugin: "java"
-apply plugin: 'kotlin'
 
 version '1.0'
 
@@ -7,13 +6,12 @@ sourceCompatibility = 1.8
 
 sourceSets.main.java.srcDirs = ["src"]
 
-repositories {
-    maven { url 'https://maven.aliyun.com/repository/public' }
-    maven { url 'https://www.jitpack.io' }
-    //mavenCentral()
+repositories{
+    mavenCentral()
+    maven{ url 'https://www.jitpack.io' }
 }
 
-ext {
+ext{
     //the build number that this plugin is made for
     mindustryVersion = 'v106'
     //version of SDK you will be using
@@ -27,77 +25,57 @@ ext {
 }
 
 //java 8 backwards compatibility flag
-allprojects {
-    tasks.withType(JavaCompile) {
-        if (JavaVersion.current() != JavaVersion.VERSION_1_8) {
+allprojects{
+    tasks.withType(JavaCompile){
+        if(JavaVersion.current() != JavaVersion.VERSION_1_8){
             options.compilerArgs.addAll(['--release', '8'])
         }
     }
 }
 
-dependencies {
+dependencies{
     compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
     compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
-task jarAndroid {
+task jarAndroid{
     dependsOn "jar"
 
-    doLast {
+	doLast{
         //collect dependencies needed for desugaring
         def files = (configurations.compileClasspath.asList() + configurations.runtimeClasspath.asList() + [new File("$sdkRoot/platforms/android-$sdkVersion/android.jar")])
-        def dependencies = files.collect { "--classpath $it.path" }.join(" ")
+        def dependencies = files.collect{ "--classpath $it.path"}.join(" ")
 
         //dex and desugar files - this requires d8 in your PATH
         doExec("d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar")
-    }
+	}
 }
 
-jar {
+jar{
     archiveFileName = "${project.archivesBaseName}Desktop.jar"
 
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    from{
+        configurations.runtimeClasspath.collect{it.isDirectory() ? it : zipTree(it)}
     }
 
-    from(rootDir) {
+    from(rootDir){
         include "mod.hjson"
     }
 
-    from("assets/") {
+    from("assets/"){
         include "**"
     }
 }
 
-task deploy(type: Jar) {
+task deploy(type: Jar){
     dependsOn jarAndroid
     dependsOn jar
     archiveFileName = "${project.archivesBaseName}.jar"
 
-    from { [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
+    from{ [zipTree("$buildDir/libs/${project.archivesBaseName}Desktop.jar"), zipTree("$buildDir/libs/${project.archivesBaseName}Android.jar")] }
 
-    doLast {
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
-        delete { delete "$buildDir/libs/${project.archivesBaseName}Android.jar" }
-    }
-}
-buildscript {
-    ext.kotlin_version = '1.4.10'
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
+    doLast{
+        delete{ delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
+        delete{ delete "$buildDir/libs/${project.archivesBaseName}Android.jar" }
     }
 }
