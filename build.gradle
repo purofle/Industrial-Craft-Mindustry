@@ -1,13 +1,17 @@
-apply plugin: "java"
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+}
 
 version '1.0'
 
 sourceCompatibility = 1.8
 
-sourceSets.main.java.srcDirs = ["src"]
+//sourceSets.main.java.srcDirs = ["src"]
 
 repositories{
-    mavenCentral()
+    //mavenCentral()
+    maven{ url 'https://maven.aliyun.com/repository/public' }
     maven{ url 'https://www.jitpack.io' }
 }
 
@@ -36,6 +40,7 @@ allprojects{
 dependencies{
     compileOnly "com.github.Anuken.Arc:arc-core:$mindustryVersion"
     compileOnly "com.github.Anuken.Mindustry:core:$mindustryVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 task jarAndroid{
@@ -77,5 +82,15 @@ task deploy(type: Jar){
     doLast{
         delete{ delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar" }
         delete{ delete "$buildDir/libs/${project.archivesBaseName}Android.jar" }
+    }
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
