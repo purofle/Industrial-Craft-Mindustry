@@ -16,8 +16,9 @@ class Blocks : ContentList {
     override fun load() {
         BigWall = object : WallPanel("大墙") {
             init {
-                requirements(Category.defense, ItemStack.with(Items.lead, 5, Items.silicon, 2))
+                requirements(Category.defense, ItemStack.with(Items.lead, 5, Items.silicon, 5))
                 isConductor = true
+                health = 100
                 size = 1
                 buildVisibility = BuildVisibility.sandboxOnly
             }
