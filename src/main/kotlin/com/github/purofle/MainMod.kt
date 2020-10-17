@@ -7,9 +7,6 @@ import com.github.purofle.content.Blocks
 import mindustry.game.EventType.WorldLoadEvent
 import mindustry.mod.Mod
 import mindustry.ui.dialogs.BaseDialog
-import okhttp3.Call
-import okhttp3.OkHttpClient
-import okhttp3.Request
 
 public class MainMod : Mod() {
     init {
