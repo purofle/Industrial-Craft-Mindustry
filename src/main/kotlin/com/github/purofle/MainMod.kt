@@ -7,10 +7,13 @@ import com.github.purofle.content.Blocks
 import mindustry.game.EventType.WorldLoadEvent
 import mindustry.mod.Mod
 import mindustry.ui.dialogs.BaseDialog
+import okhttp3.Call
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
 public class MainMod : Mod() {
     init {
-        Log.info("插件开始加载")
+        Log.info("加载")
         Events.on(WorldLoadEvent::class.java) {
             Time.runTask(10f) {
                 val dialog = BaseDialog("欢迎使用本mod!")
