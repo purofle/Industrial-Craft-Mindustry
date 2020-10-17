@@ -8,7 +8,7 @@ import mindustry.game.EventType.WorldLoadEvent
 import mindustry.mod.Mod
 import mindustry.ui.dialogs.BaseDialog
 
-public class TestMod : Mod() {
+public class MainMod : Mod() {
     init {
         Log.info("插件开始加载")
         Events.on(WorldLoadEvent::class.java) {

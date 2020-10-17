@@ -1,7 +1,7 @@
-name: "test-kotlin-mod"
-displayName: "Test kotlin Mod"
+name: "IC"
+displayName: "工业时代"
 author: "purofle"
-main: "com.github.purofle.TestMod"
-description: "A jar mod."
+main: "com.github.purofle.MainMod"
+description: "一个跟mc中的工业时代(Industrial Craft)完全扯不上关系的mod"
 version: 1.0
-minGameVersion: 105
+minGameVersion: 108
