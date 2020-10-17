@@ -5,7 +5,7 @@ import mindustry.ctype.ContentList
 import mindustry.type.Item
 
 class Items: ContentList {
-    public companion object {
+    companion object {
         var Iron : Item? = null
     }
     override fun load() {
