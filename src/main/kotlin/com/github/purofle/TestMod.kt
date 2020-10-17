@@ -11,7 +11,6 @@ import mindustry.ui.dialogs.BaseDialog
 public class TestMod : Mod() {
     init {
         Log.info("插件开始加载")
-
         Events.on(WorldLoadEvent::class.java) {
             Time.runTask(10f) {
                 val dialog = BaseDialog("欢迎使用本mod!")
