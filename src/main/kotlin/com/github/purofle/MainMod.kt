@@ -3,8 +3,8 @@ package com.github.purofle
 import arc.Events
 import arc.util.Log
 import arc.util.Time
-import com.github.purofle.content.Blocks
-import com.github.purofle.content.Items
+import com.github.purofle.content.MCBlocks
+import com.github.purofle.content.MCItems
 import mindustry.game.EventType.WorldLoadEvent
 import mindustry.mod.Mod
 import mindustry.ui.dialogs.BaseDialog
@@ -23,7 +23,7 @@ public class MainMod : Mod() {
     }
 
     override fun loadContent() {
-        Items().load()
-        Blocks().load()
+        MCItems().load()
+        MCBlocks().load()
     }
 }
