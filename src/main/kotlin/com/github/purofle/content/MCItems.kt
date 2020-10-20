@@ -14,5 +14,10 @@ class MCItems : ContentList {
                 alwaysUnlocked = true
             }
         }
+        iron_nugget = object : Item("iron_nugget") {
+            init {
+                alwaysUnlocked = true
+            }
+        }
     }
 }
