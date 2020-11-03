@@ -1,6 +1,7 @@
 package com.github.purofle.content
 
 import arc.graphics.Color
+import mindustry.content.Bullets
 import mindustry.content.Fx
 import mindustry.content.Items
 import mindustry.ctype.ContentList
@@ -60,7 +61,7 @@ class MCBlocks : ContentList {
             init {
                 requirements(Category.crafting, with(MCItems.Iron, 50))
                 ammo(
-                        MCItems.iron_nugget, MCBullets
+                        MCItems.iron_nugget, Bullets.damageLightningGround
                 )
                 spread = 4.3f
                 shots = 2

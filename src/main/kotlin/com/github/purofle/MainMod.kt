@@ -5,14 +5,14 @@ import arc.util.Log
 import arc.util.Time
 import com.github.purofle.content.MCBlocks
 import com.github.purofle.content.MCItems
-import mindustry.game.EventType.WorldLoadEvent
+import mindustry.game.EventType.ClientLoadEvent
 import mindustry.mod.Mod
 import mindustry.ui.dialogs.BaseDialog
 
 public class MainMod : Mod() {
     init {
         Log.info("加载")
-        Events.on(WorldLoadEvent::class.java) {
+        Events.on(ClientLoadEvent::class.java) {
             Time.runTask(10f) {
                 val dialog = BaseDialog("欢迎使用本mod!")
                 dialog.cont.add("[red]本mod目前尚未完善（")
