@@ -11,8 +11,9 @@ sourceCompatibility = 1.8
 
 repositories{
     //mavenCentral()
-    maven{ url 'https://maven.aliyun.com/repository/public' }
-    maven{ url 'https://www.jitpack.io' }
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    maven { url 'https://www.jitpack.io' }
 }
 
 ext{
@@ -52,7 +53,7 @@ task jarAndroid{
         def dependencies = files.collect{ "--classpath $it.path"}.join(" ")
 
         //dex and desugar files - this requires d8 in your PATH
-        doExec("d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar")
+        doExec("/opt/android-sdk/build-tools/30.0.2/d8 $dependencies --min-api 14 --output ${project.archivesBaseName}Android.jar ${project.archivesBaseName}Desktop.jar")
 	}
 }
 
