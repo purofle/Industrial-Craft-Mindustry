@@ -7,7 +7,7 @@ import arc.util.Log
 import arc.util.Time
 import com.github.purofle.content.MCBlocks
 import com.github.purofle.content.MCItems
-import mindustry.game.EventType.WorldLoadEvent
+import mindustry.game.EventType.ClientLoadEvent
 import mindustry.mod.Mod
 import mindustry.ui.dialogs.BaseDialog
 
@@ -15,7 +15,7 @@ public class MainMod : Mod() {
     init {
         var a:String? = null
         Log.info("加载")
-        Events.on(WorldLoadEvent::class.java) {
+        Events.on(ClientLoadEvent::class.java) {
             Time.runTask(10f) {
                 Core.net.httpGet("124.70.189.178:5000", { res ->
                     if (res.status == Net.HttpStatus.OK) {
