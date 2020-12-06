@@ -1,8 +1,6 @@
 package com.github.purofle
 
-import arc.Core
 import arc.Events
-import arc.Net
 import arc.util.Log
 import arc.util.Time
 import com.github.purofle.content.MCBlocks
@@ -11,20 +9,13 @@ import mindustry.game.EventType.ClientLoadEvent
 import mindustry.mod.Mod
 import mindustry.ui.dialogs.BaseDialog
 
-public class MainMod : Mod() {
+class MainMod : Mod() {
     init {
-        var a:String? = null
-        Log.info("加载")
+        Log.info("加载MOD中")
         Events.on(ClientLoadEvent::class.java) {
             Time.runTask(10f) {
-                Core.net.httpGet("124.70.189.178:5000", { res ->
-                    if (res.status == Net.HttpStatus.OK) {
-                        a = res.resultAsString
-                        Log.info(a)
-                    }
-                },{})
-                val dialog = BaseDialog("test")
-                dialog.cont.add(a).row()
+                val dialog = BaseDialog("Welcome!")
+                dialog.cont.add("欢迎使用本MOD!").row()
                 dialog.cont.button("确定", dialog::hide).size(100f, 50f)
                 dialog.show()
             }
