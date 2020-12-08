@@ -23,7 +23,7 @@ class MCBlocks : ContentList {
 
         object : GenericSmelter("beater") {
             init {
-                requirements(Category.crafting, with(Items.copper, 50))
+                requirements(Category.crafting, with(Items.copper, 50, Items.lead, 200))
                 craftEffect = Fx.smeltsmoke
                 outputItem = ItemStack(MCItems.iron_nugget, 1)
                 craftTime = 40f

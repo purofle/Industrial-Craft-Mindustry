@@ -5,8 +5,8 @@ import mindustry.type.Item
 
 class MCItems : ContentList{
     companion object {
-        val iron_nugget: Item? = null
-        var Iron:Item? = null
+        var iron_nugget: Item? = null
+        var Iron: Item? = null
     }
     override fun load() {
         Iron = object : Item("Iron") {
@@ -14,7 +14,7 @@ class MCItems : ContentList{
                 alwaysUnlocked = true
             }
         }
-        object : Item("iron_nugget") {
+        iron_nugget = object : Item("iron_nugget") {
             init {
                 alwaysUnlocked = true
             }
