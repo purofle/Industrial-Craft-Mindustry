@@ -26,7 +26,7 @@ class MCBlocks : ContentList {
             init {
                 requirements(Category.crafting, with(Items.copper, 50, Items.lead, 200))
                 craftEffect = Fx.smeltsmoke
-                outputItem = ItemStack(MCtems.iron_nugget, 1)
+                outputItem = ItemStack(MCItems.iron_nugget, 1)
                 craftTime = 40f
                 size = 2
                 hasPower = true
