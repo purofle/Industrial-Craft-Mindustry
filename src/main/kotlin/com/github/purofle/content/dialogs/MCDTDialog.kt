@@ -11,5 +11,6 @@ class MCDTDialog : BaseDialog("MCDTDialog") {
         buttons.defaults().size(160f, 64f)
 
         buttons.button("@back", Icon.left, this::hide).name("back")
+        //TODO
     }
 }

@@ -39,6 +39,7 @@ class MCBlocks : ContentList {
         }
         object : MCDT("mcdt") {
             init {
+                requirements(Category.crafting, with(Items.copper, 50, Items.lead, 200))
                 alwaysUnlocked = true
             }
         }

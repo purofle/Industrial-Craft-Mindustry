@@ -8,7 +8,7 @@ import mindustry.ui.Styles
 import mindustry.world.Block
 import mindustry.world.meta.BlockGroup
 
-class MCDT : Block("mcdt") {
+open class MCDT(name: String) : Block(name) {
     override fun init() {
         super.init()
         update = true
