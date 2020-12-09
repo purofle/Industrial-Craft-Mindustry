@@ -37,5 +37,10 @@ class MCBlocks : ContentList {
                 consumes.power(0.50f)
             }
         }
+        object : MCDT("mcdt") {
+            init {
+                alwaysUnlocked = true
+            }
         }
+    }
     }
